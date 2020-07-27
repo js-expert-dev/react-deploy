@@ -1,0 +1,14 @@
+.side-nav-item {
+    padding-left: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.nav-item-link {
+    color: #808e9f;
+}
+
+.nav-item-link:hover {
+    color: white;
+    text-decoration: none;
+}
