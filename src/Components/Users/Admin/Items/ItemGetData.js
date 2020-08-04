@@ -1,5 +1,7 @@
 import React from "react";
 // import { getToken } from "../utils/common";
+import {toast} from "react-toastify";
+
 
 const token = localStorage.getItem('token');
 
@@ -60,6 +62,7 @@ export default class ItemGetData extends React.Component {
       .then((res) => res.json())
       .then(
         (result) => {
+          toast.success(result.message);
           this.setState({
             response: result,
             items: items.filter((item) => item._id !== itemId),
@@ -114,7 +117,7 @@ export default class ItemGetData extends React.Component {
           </div>
 
           <h1 style={{ textAlign: "center" }}>Items</h1>
-          {this.state.response.message && <p>{this.state.response.message}</p>}
+          
           <table className="table table-strip">
             <thead>
               <tr>

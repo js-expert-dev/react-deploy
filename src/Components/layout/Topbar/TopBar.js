@@ -21,7 +21,7 @@ function TopBar(props) {
                     
 
 
-                    <NavDropdown title={<> <i className="fas fa-user mr-1"/> userName </> } id="collasible-nav-dropdown">
+                    <NavDropdown title={<> <i className="fas fa-user mr-1"/> User Name </> } id="collasible-nav-dropdown">
                         <NavDropdown.Item onClick={() => onLogout()}>
                             <i className="fas fa-sign-out-alt"/> Sign Out
                         </NavDropdown.Item>

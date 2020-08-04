@@ -20,7 +20,9 @@ export const login =(data) => async dispatch =>{
     }catch(err){
         const {response} = err;
         if (response && response.status === 400) {
-            toast.error(response.data.message);
+            toast.error(response.data.message,{
+                
+            });
         }
         // throw err;
     }

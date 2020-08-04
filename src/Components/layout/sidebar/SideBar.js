@@ -144,46 +144,52 @@ function SideBar(props) {
             children: []
         },
         {
-            displayName: "Attendance",
+            displayName: "Order Management",
             icon: <i className="fas fa-hourglass-half"/>,
             children: [
                 {
-                    displayName: 'Me',
-                    route: `${url}/attendance/own`,
+                    displayName: 'Pending Order',
+                    route: `${url}/order/pending`,
                     icon: <i className="far fa-circle"/>,
                     children: []
                 },
                 {
-                    displayName: 'My subs',
-                    route: `${url}/attendance/mysub`,
+                    displayName: 'Verified Order',
+                    route: `${url}/order/approved`,
                     icon: <i className="far fa-circle"/>,
                     children: []
                 },
                 {
-                    displayName: 'My outlet',
-                    route: `${url}/attendance/myoutlet`,
+                    displayName: 'InProgress Order',
+                    route: `${url}/order/progress`,
                     icon: <i className="far fa-circle"/>,
                     children: []
                 },
                 {
-                    displayName: 'My group',
-                    route: `${url}/attendance/mygroup`,
+                    displayName: 'Completed Order',
+                    route: `${url}/order/Complete`,
                     icon: <i className="far fa-circle"/>,
                     children: []
                 }
             ]
         },
         {
-            displayName: "Announcements",
-            route: `${url}/announcements`,
+            displayName: "Bill Management",
             icon: <i className="far fa-bell"/>,
-            children: []
-        },
-        {
-            displayName: "ActivityLogs",
-            route: `${url}/activity-logs`,
-            icon: <i className="fas fa-list-ul"/>,
-            children: []
+            children: [
+                {
+                    displayName: 'Un Paid Bills',
+                    route: `${url}/bill/unpaid`,
+                    icon: <i className="far fa-circle"/>,
+                    children: []
+                },
+                {
+                    displayName: 'Paid Bills',
+                    route: `${url}/bill/paid`,
+                    icon: <i className="far fa-circle"/>,
+                    children: []
+                }
+            ]
         }
     ];
     return (
@@ -191,7 +197,7 @@ function SideBar(props) {
             <div className="sidebar-heading">
                 <h4 className="mb-0">Smart Ordering</h4>
                 <small className="version">Version 0.1.0.0 <span className="badge badge-primary">Beta</span></small>
-                {location.pathname.includes('admin') && <h6 className="mt-1">Admin</h6>}
+                {location.pathname.includes('admin') ? <h6 className="mt-1">Admin</h6> : <h6 className="mt-1">Staff</h6> }
             </div>
             <ul className="list-unstyled nav-ul">
                 {location.pathname.includes('admin') && adminNavigation.map((nav, index) => (
