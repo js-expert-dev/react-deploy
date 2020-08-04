@@ -1,21 +1,21 @@
-import React from "react";
-import toFormData from "../utils/utils";
+import React from 'react';
+import toFormData from '../utils/utils';
 // import { getToken } from "../utils/common";
 
-const token =localStorage.getItem('token');
+const token = localStorage.getItem('token');
 
 class EditItem extends React.Component {
   constructor(props) {
     super(props);
     this.initialState = {
-      image: "",
-      name: "",
-      price: "",
-      description: "",
-      category: "",
+      image: '',
+      name: '',
+      price: '',
+      description: '',
+      category: '',
       itemCate: [],
       isLoading: false,
-      _id: "",
+      _id: '',
     };
     if (props.product) {
       this.state = props.product;
@@ -49,14 +49,14 @@ class EditItem extends React.Component {
   }
 
   componentDidMount() {
-    const apiUrl = "http://localhost:3000/category";
+    const apiUrl = 'http://localhost:3000/category';
 
     const options = {
-      method: "GET",
+      method: 'GET',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "access-token": token,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'access-token': token,
       },
     };
 
@@ -70,7 +70,7 @@ class EditItem extends React.Component {
           });
         },
         (error) => {
-          console.log("Error : " + error);
+          console.log('Error : ' + error);
         }
       );
   }
@@ -144,18 +144,15 @@ class EditItem extends React.Component {
                 >
                   {itemCate.map((cat) => (
                     <option key={cat._id} value={cat._id}>
-                      {cat.name}{" "}
+                      {cat.name}
                     </option>
                   ))}
                 </select>
               </div>
               <input type="hidden" name="_id" value={this.state._id} />
 
-              <button
-                className="btn btn-outline-block btn-success"
-                type="submit"
-              >
-                Save
+              <button className="btn btn-outline-success" type="submit">
+                <i class="fa fa-check">&nbsp; </i> Save
               </button>
             </form>
           </div>

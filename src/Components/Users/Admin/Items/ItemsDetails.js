@@ -1,9 +1,10 @@
-import React from "react";
-import ItemList from "./ItemGetData";
-import EditItem from "./EditItem";
+import React from 'react';
+import ItemList from './ItemGetData';
+import EditItem from './EditItem';
+import { toast } from 'react-toastify';
 
-const axios = require("axios").default;
-const API_URL = "http://localhost:3000";
+const axios = require('axios').default;
+const API_URL = 'http://localhost:3000';
 const token = localStorage.getItem('token');
 
 export default class itemsDetails extends React.Component {
@@ -16,7 +17,7 @@ export default class itemsDetails extends React.Component {
       error: null,
       response: {},
       product: {},
-      itemId: "",
+      itemId: '',
     };
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
@@ -30,54 +31,49 @@ export default class itemsDetails extends React.Component {
   }
 
   onFormSubmit(data, itemId = null) {
-
-
-
     if (this.state.isEditProduct) {
       const config = {
         method: 'PUT',
-        url: API_URL + "/item/" + itemId,
+        url: API_URL + '/item/' + itemId,
         headers: { 'access-token': token },
-        data: data
-    }
+        data: data,
+      };
 
-      axios(config)
-        .then((result) => {
-          this.setState({
-            isAddItem: false,
-            isEditProduct: false,
-            home: false,
-          });
+      axios(config).then((result) => {
+        this.setState({
+          isAddItem: false,
+          isEditProduct: false,
+          home: false,
         });
+        toast.success(result.message);
+      });
     } else {
-
       const config = {
         method: 'POST',
-        url: API_URL + "/item",
+        url: API_URL + '/item',
         headers: { 'access-token': token },
-        data: data
-    }
-      axios(config)
-        .then((result) => {
-          this.setState({
-            isAddItem: false,
-            isEditProduct: false,
-            home: false,
-          });
+        data: data,
+      };
+      axios(config).then((result) => {
+        this.setState({
+          isAddItem: false,
+          isEditProduct: false,
+          home: false,
         });
+      });
     }
   }
 
   editItem = (itemid) => {
     this.setState({ itemId: itemid });
-    const apiUrl = "http://localhost:3000/item/" + itemid;
+    const apiUrl = 'http://localhost:3000/item/' + itemid;
 
     const options = {
-      method: "GET",
+      method: 'GET',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "access-token": token,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'access-token': token,
       },
     };
 
@@ -131,7 +127,7 @@ export default class itemsDetails extends React.Component {
               </div>
             </div>
           )} */}
-        {this.state.response.status === "success" && (
+        {this.state.response.status === 'success' && (
           <div>
             <br />
             <p>{this.state.response.message}</p>
