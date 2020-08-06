@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { actionGetPendingBills, updateBillStatus } from './store/action';
+import { actionGetPaidBills } from './store/action';
 import { connect } from 'react-redux';
 
-class PendingBills extends Component {
+class PaidBills extends Component {
   state = {
     search: '',
   };
 
   componentDidMount() {
-    this.props.actionGetPendingBills();
+    this.props.actionGetPaidBills();
   }
 
   updateSearch(event) {
@@ -18,8 +18,8 @@ class PendingBills extends Component {
   }
 
   filterItems = () => {
-    if (this.props?.pendingBills?.length > 0) {
-      return this.props.pendingBills?.filter((item) => {
+    if (this.props?.paidBills?.length > 0) {
+      return this.props.paidBills?.filter((item) => {
         return (
           item.amount.toLowerCase().indexOf(this.state.search.toLowerCase()) !==
           -1
@@ -30,16 +30,8 @@ class PendingBills extends Component {
     }
   };
 
-  updateBill = (id) => {
-    const data = {
-      status: 'paid',
-    };
-    debugger;
-    this.props.updateBillStatus(id, data);
-  };
-
   render() {
-    let pendingBill = this.filterItems();
+    let paidBill = this.filterItems();
     return (
       <div className="row">
         <div className="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12">
@@ -61,24 +53,15 @@ class PendingBills extends Component {
                 <th>Payment Type </th>
                 <th>CheckIn Code </th>
                 <th>Amount</th>
-                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {pendingBill?.map((order) => (
+              {paidBill?.map((order) => (
                 <tr key={order.id}>
                   <td>{order?.status}</td>
                   <td>{order?.paymentType}</td>
                   <td>{order?.checkIn}</td>
                   <td>{order?.amount} </td>
-                  <td>
-                    <button
-                      className="btn btn-outline-primary"
-                      onClick={() => this.updateBill(order._id)}
-                    >
-                      Paid
-                    </button>
-                  </td>
                 </tr>
               ))}
             </tbody>
@@ -88,13 +71,10 @@ class PendingBills extends Component {
     );
   }
 }
-const mapStateToProps = ({ getPendingBillsReducer }) => {
+const mapStateToProps = ({ getPaidBillsReducer }) => {
   return {
-    pendingBills: getPendingBillsReducer.pendingBills,
+    paidBills: getPaidBillsReducer.paidBills,
   };
 };
 
-export default connect(mapStateToProps, {
-  actionGetPendingBills,
-  updateBillStatus,
-})(PendingBills);
+export default connect(mapStateToProps, { actionGetPaidBills })(PaidBills);

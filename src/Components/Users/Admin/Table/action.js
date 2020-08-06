@@ -11,6 +11,6 @@ export const addTable = (data) => async (dispatch) => {
         'access-token': token,
       },
     })
-    .then((res) => toast.success('Category is added successfully.'))
+    .then((res) => toast.success('Table is added successfully.'))
     .catch((error) => toast.error('error', error));
 };

@@ -7,6 +7,9 @@ export const types = {
   loggedIn: 'LOGGED_IN',
   user: 'USER',
   token: 'TOKEN',
+  getPaidBills: 'GET_PAID_BILLS',
+  getPendingBills: 'GET_PENDING_BILLS',
+  getAllBills: 'GET_ALL_BILLS',
 };
 
 export const apiCategory = {
@@ -21,4 +24,26 @@ export const apiTable = {
 
 export const apiItems = {
   base_url: 'http://localhost:3000/item',
+};
+
+export const apiAddUser = {
+  base_url: 'http://localhost:3000/user',
+};
+
+export const apiUpdateUser = {
+  base_url: 'http://localhost:3000/user/',
+};
+
+export const apiGetPaidBills = {
+  base_url: 'http://localhost:3000/bill?status=paid',
+};
+export const apiGetPendingBills = {
+  base_url: 'http://localhost:3000/bill?status=pending',
+};
+export const apiGetAllBills = {
+  base_url: 'http://localhost:3000/bill?status=all',
+};
+
+export const apiUpdateBillStatus = {
+  base_url: 'http://localhost:3000/bill/',
 };

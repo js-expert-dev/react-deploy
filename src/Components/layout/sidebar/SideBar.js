@@ -8,7 +8,6 @@ function SideBar(props) {
     match: { url },
     location,
   } = props;
-  // const {lang} = useSelector(state => state.langReducer);
 
   const adminNavigation = [
     {
@@ -77,13 +76,13 @@ function SideBar(props) {
       children: [
         {
           displayName: 'User Details',
-          route: `${url}/staff`,
+          route: `${url}/user`,
           icon: <i className="far fa-circle" />,
           children: [],
         },
         {
           displayName: 'Add User',
-          route: `${url}/staff/add`,
+          route: `${url}/user/add`,
           icon: <i className="far fa-circle" />,
           children: [],
         },
@@ -94,20 +93,32 @@ function SideBar(props) {
       icon: <i className="fas fa-hourglass-half" />,
       children: [
         {
-          displayName: 'All Order',
-          route: `${url}/order/all`,
+          displayName: 'All Orders',
+          route: `${url}/orders`,
           icon: <i className="far fa-circle" />,
           children: [],
         },
         {
           displayName: 'Pending Orders',
-          route: `${url}/order/pending`,
+          route: `${url}/orders/pending`,
           icon: <i className="far fa-circle" />,
           children: [],
         },
         {
           displayName: 'Approved Orders',
-          route: `${url}/order/approved`,
+          route: `${url}/orders/approved`,
+          icon: <i className="far fa-circle" />,
+          children: [],
+        },
+        {
+          displayName: 'In Progress Orders',
+          route: `${url}/orders/progress`,
+          icon: <i className="far fa-circle" />,
+          children: [],
+        },
+        {
+          displayName: 'Completed Orders',
+          route: `${url}/orders/Complete`,
           icon: <i className="far fa-circle" />,
           children: [],
         },
@@ -124,14 +135,14 @@ function SideBar(props) {
           children: [],
         },
         {
-          displayName: 'Paid Bills',
-          route: `${url}/bills/paid`,
+          displayName: 'Pending Bills',
+          route: `${url}/bills/pending`,
           icon: <i className="far fa-circle" />,
           children: [],
         },
         {
-          displayName: 'Pending Bills',
-          route: `${url}/bills/pending`,
+          displayName: 'Paid Bills',
+          route: `${url}/bills/paid`,
           icon: <i className="far fa-circle" />,
           children: [],
         },

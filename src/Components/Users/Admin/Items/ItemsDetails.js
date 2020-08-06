@@ -40,12 +40,13 @@ export default class itemsDetails extends React.Component {
       };
 
       axios(config).then((result) => {
+        toast.success('Item is updated successfully.');
         this.setState({
           isAddItem: false,
           isEditProduct: false,
           home: false,
         });
-        toast.success(result.message);
+        // toast.success(result.message);
       });
     } else {
       const config = {
@@ -105,28 +106,6 @@ export default class itemsDetails extends React.Component {
   render() {
     return (
       <div className="Container">
-        {/* {!this.state.isAddItem &&
-          !this.state.isEditProduct &&
-          !this.state.home && (
-            <div className="row">
-              <div className="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-6">
-                <button
-                  className="btn btn-outline-primary"
-                  onClick={() => this.homeShow()}
-                >
-                  <i className="fa fa-arrow-left"></i>&nbsp;Back
-                </button>
-              </div>
-              <div className="offset-md-4 offset-sm-4 offset-lg-4 offset-xl-4 offset-4 col-md-2 col-lg-2 col-sm-2 col-xl-2 col-2">
-                <button
-                  className="btn btn-outline-primary"
-                  onClick={() => this.onCreate()}
-                >
-                  Add Product
-                </button>
-              </div>
-            </div>
-          )} */}
         {this.state.response.status === 'success' && (
           <div>
             <br />

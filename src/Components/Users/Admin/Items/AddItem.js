@@ -7,7 +7,7 @@ class AddItem extends React.Component {
   constructor(props) {
     super(props);
     this.initialState = {
-      image: null,
+      image: '',
       name: '',
       price: '',
       description: '',

@@ -1,7 +1,7 @@
-import React from "react";
-import CategoryList from "./CatagoryGetData";
-import EditCategory from "./EditCategory";
-
+import React from 'react';
+import CategoryList from './CatagoryGetData';
+import EditCategory from './EditCategory';
+import { toast } from 'react-toastify';
 
 const token = localStorage.getItem('token');
 
@@ -15,7 +15,7 @@ export default class CategoryDetails extends React.Component {
       isEditProduct: false,
       isAddCategory: false,
       isHomeShow: false,
-      itemId: "",
+      itemId: '',
     };
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
@@ -32,24 +32,24 @@ export default class CategoryDetails extends React.Component {
     let apiUrl;
     let options;
     if (this.state.isEditProduct) {
-      apiUrl = "http://localhost:3000/category/" + this.state.itemId;
+      apiUrl = 'http://localhost:3000/category/' + this.state.itemId;
       options = {
-        method: "PUT",
+        method: 'PUT',
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "access-token": token,
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'access-token': token,
         },
         body: JSON.stringify(data),
       };
     } else {
-      apiUrl = "http://localhost:3000/category";
+      apiUrl = 'http://localhost:3000/category';
       options = {
-        method: "POST",
+        method: 'POST',
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "access-token": token,
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'access-token': token,
         },
         body: JSON.stringify(data),
       };
@@ -58,6 +58,7 @@ export default class CategoryDetails extends React.Component {
       .then((res) => res.json())
       .then(
         (result) => {
+          toast.success('Category is updated successfully.');
           this.setState({
             response: result,
             isAddCategory: false,
@@ -72,14 +73,14 @@ export default class CategoryDetails extends React.Component {
 
   editCategory = (categoryId) => {
     this.setState({ itemId: categoryId });
-    const apiUrl = "http://localhost:3000/category/" + categoryId;
+    const apiUrl = 'http://localhost:3000/category/' + categoryId;
 
     const options = {
-      method: "GET",
+      method: 'GET',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "access-token": token,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'access-token': token,
       },
     };
 
@@ -112,7 +113,7 @@ export default class CategoryDetails extends React.Component {
   render() {
     return (
       <div className="">
-        {this.state.response.status === "success" && (
+        {this.state.response.status === 'success' && (
           <div>
             <br />
             <p>{this.state.response.message}</p>
