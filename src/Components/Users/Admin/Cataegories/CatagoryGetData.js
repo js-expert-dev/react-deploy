@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 // import { getToken } from "../utils/common";
 
@@ -10,19 +10,19 @@ export default class CategoryData extends React.Component {
       items: [],
       isLoaded: false,
       response: {},
-      search: "",
+      search: '',
     };
   }
 
   componentDidMount() {
-    const apiUrl = "http://localhost:3000/category";
+    const apiUrl = 'http://localhost:3000/category';
 
     const options = {
-      method: "GET",
+      method: 'GET',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "access-token": token,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'access-token': token,
       },
     };
 
@@ -44,12 +44,12 @@ export default class CategoryData extends React.Component {
   delCategory(itemId) {
     const { items } = this.state;
 
-    const apiUrl = "http://localhost:3000/category/" + itemId;
+    const apiUrl = 'http://localhost:3000/category/' + itemId;
     const formData = new FormData();
-    formData.append("itemId", itemId);
+    formData.append('itemId', itemId);
 
     const options = {
-      method: "DELETE",
+      method: 'DELETE',
       body: formData,
     };
     fetch(apiUrl, options)
@@ -68,26 +68,22 @@ export default class CategoryData extends React.Component {
   }
 
   updateSearch(event) {
-
     this.setState({
       search: event.target.value.substr(0, 20),
     });
-    
   }
-  filterItems=()=>{
-    if(this.state.items.length>0){
-     return this.state.items.filter((item) => {
+  filterItems = () => {
+    if (this.state.items.length > 0) {
+      return this.state.items.filter((item) => {
         return (
-          item.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+          item.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !==
+          -1
         );
       });
+    } else {
+      return [];
     }
-    else{
-      return []
-    }
-  }
-
-
+  };
 
   render() {
     let items;
@@ -100,44 +96,46 @@ export default class CategoryData extends React.Component {
       items = this.filterItems();
       return (
         <div className="row">
-        <div className="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12">
-          <br />
-          <div className="form-group">
-            <input
-              className="form-control"
-              type="text"
-              placeholder="Search Category here"
-              value={this.state.search}
-              onChange={this.updateSearch.bind(this)}
-            />
-          </div>
-          <h1 style={{ textAlign: "center" }}>Categories</h1>
-          {this.state.response.message && <p>{this.state.response.message}</p>}
-          <table className="table table-strip">
-            <thead>
-              <tr>
-                <th>Category Name</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {items.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.name}</td>
-                  <td>
-                    <button
-                      className="btn btn-outline-info btn-small"
-                      onClick={() => this.props.editCategory(item._id)}
-                    >
-                     Edit
-                    </button>
-                    {/* &nbsp;&nbsp;<button className='btn btn-danger btn-small' onClick={()=> this.delCategory(item._id)} >Delete</button> */}
-                  </td>
+          <div className="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12">
+            <br />
+            <div className="form-group">
+              <input
+                className="form-control"
+                type="text"
+                placeholder="Search Category here"
+                value={this.state.search}
+                onChange={this.updateSearch.bind(this)}
+              />
+            </div>
+            <h1 style={{ textAlign: 'center' }}>Categories Details</h1>
+            {this.state.response.message && (
+              <p>{this.state.response.message}</p>
+            )}
+            <table className="table table-strip">
+              <thead>
+                <tr>
+                  <th>Category Name</th>
+                  <th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {items.map((item) => (
+                  <tr key={item.id}>
+                    <td>{item.name}</td>
+                    <td>
+                      <button
+                        className="btn btn-outline-info btn-small"
+                        onClick={() => this.props.editCategory(item._id)}
+                      >
+                        Edit
+                      </button>
+                      {/* &nbsp;&nbsp;<button className='btn btn-danger btn-small' onClick={()=> this.delCategory(item._id)} >Delete</button> */}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       );
     }

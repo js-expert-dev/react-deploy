@@ -1,41 +1,27 @@
 import React, { Component } from 'react';
 import {
-  Card,
-  Col,
-  Container,
-  Form,
   Row,
+  Col,
+  Form,
+  Card,
+  Container,
   InputGroup,
   FormControl,
   Button,
 } from 'react-bootstrap';
-import './Login.css';
-import { login } from './action';
-import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 
-class Login extends Component {
+export default class Forget extends Component {
   constructor(props) {
     super(props);
     this.state = {
       validated: false,
       email: '',
-      password: '',
     };
   }
-
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.loggedIn.loggedIn && newProps.user.user) {
-      if (newProps.user.user.isAdmin) {
-        this.props.history.push('/admin');
-      } else {
-        this.props.history.push('/staff');
-      }
-    }
-  }
   handleSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -46,16 +32,19 @@ class Login extends Component {
     }
     const data = {
       email: this.state.email,
-      password: this.state.password,
     };
     delete data.validated;
 
-    this.props.login(data);
+    toast.success('Email is sent to you successfully.', {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    this.props.history.goBack();
+
+    // this.props.actionForgetPassword(data);
   };
 
   render() {
-    const { validated, email, password } = this.state;
-
+    const { email, validated } = this.state;
     return (
       <Container>
         <Row>
@@ -64,7 +53,7 @@ class Login extends Component {
               Smart Ordering
             </h1>
             <Card>
-              <small className="text-center mt-5 mb-3">Sign In</small>
+              <h3 className="text-center mt-5 mb-3">Forget Password</h3>
               <Form
                 className="mx-5"
                 noValidate
@@ -77,7 +66,7 @@ class Login extends Component {
                       value={email}
                       onChange={this.handleChange}
                       name="email"
-                      placeholder="Email"
+                      placeholder="Please Enter Email"
                       aria-label="Username or Email"
                       aria-describedby="username-addon"
                       required
@@ -89,37 +78,10 @@ class Login extends Component {
                     </InputGroup.Append>
                   </InputGroup>
                 </Form.Group>
-                <Form.Group>
-                  <InputGroup>
-                    <FormControl
-                      type="password"
-                      name="password"
-                      value={password}
-                      onChange={this.handleChange}
-                      placeholder="Password"
-                      aria-label="Password"
-                      aria-describedby="password-addon"
-                      required
-                    />
-                    <InputGroup.Append>
-                      <InputGroup.Text id="password-addon">
-                        <i className="fas fa-lock" />
-                      </InputGroup.Text>
-                    </InputGroup.Append>
-                  </InputGroup>
-                </Form.Group>
                 <Form.Group className="mb-5">
                   <Button variant="primary" block type="submit">
-                    Login
+                    Submit
                   </Button>
-                  <small
-                    className="text-info btn p-0"
-                    onClick={() => {
-                      this.props.history.push('/forget');
-                    }}
-                  >
-                    ForgotPassword?
-                  </small>
                 </Form.Group>
               </Form>
             </Card>
@@ -129,12 +91,3 @@ class Login extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    loggedIn: state.loggedIn,
-    user: state.user,
-  };
-};
-
-export default connect(mapStateToProps, { login })(Login);

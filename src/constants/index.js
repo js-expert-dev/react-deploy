@@ -10,6 +10,7 @@ export const types = {
   getPaidBills: 'GET_PAID_BILLS',
   getPendingBills: 'GET_PENDING_BILLS',
   getAllBills: 'GET_ALL_BILLS',
+  getStaffUser: 'GET_STAFF_USER',
 };
 
 export const apiCategory = {
@@ -27,6 +28,10 @@ export const apiItems = {
 };
 
 export const apiAddUser = {
+  base_url: 'http://localhost:3000/user',
+};
+
+export const apiGetUser = {
   base_url: 'http://localhost:3000/user',
 };
 

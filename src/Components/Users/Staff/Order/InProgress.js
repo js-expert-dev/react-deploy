@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { toast } from 'react-toastify';
 
-class PendingOrder extends Component {
+export default class InProgressOrder extends Component {
   state = {
     isLoaded: false,
     orders: [],
-    isVerify: false,
-    isHome: false,
-    approved: {},
+    isOrder: false,
   };
 
   componentDidMount() {
-    const apiUrl = 'http://localhost:3000/order?status=pending';
+    const apiUrl = 'http://localhost:3000/order?status=in-progress';
     const token = localStorage.getItem('token');
 
     const options = {
@@ -37,12 +35,12 @@ class PendingOrder extends Component {
       });
   }
 
-  orderApproved = (orderId) => {
+  orderCompleted = (orderId) => {
     const apiUrl = 'http://localhost:3000/order/' + orderId;
     const token = localStorage.getItem('token');
 
     const data = {
-      status: 'approved',
+      status: 'completed',
     };
 
     const options = {
@@ -69,27 +67,13 @@ class PendingOrder extends Component {
       });
   };
 
-  homeShow = () => {
-    this.setState({
-      isVerify: false,
-      isHome: true,
-    });
-  };
-  VerifyShow = () => {
-    this.setState({
-      isVerify: true,
-      isHome: false,
-    });
-  };
-
   render() {
     if (this.state.isLoaded) {
       return (
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12">
-              <h1 style={{ textAlign: 'center' }}>Pending Orders</h1>
-
+              <h1 className="text-center p-1">In Progress Orders</h1>
               <table className="table table-strip">
                 <thead>
                   <tr>
@@ -101,19 +85,19 @@ class PendingOrder extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.orders?.map((order) => (
+                  {this.state?.orders?.map((order) => (
                     <tr key={order._id}>
                       <td style={{ color: 'red' }}>
-                        <b>{order?.status?.toUpperCase()}</b>
+                        <b>{order?.status.toUpperCase()}</b>
                       </td>
                       <td>{order?.dateTime}</td>
                       <td>
                         <ul>
                           <li>
-                            <b>Hall # </b> {order?.checkIn?.table?.hallNo}{' '}
+                            <b>Hall # </b> {order?.checkIn?.table?.hallNo}
                           </li>
                           <li>
-                            <b>Table # </b> {order?.checkIn?.table?.tableNo}{' '}
+                            <b>Table # </b> {order?.checkIn?.table?.tableNo}
                           </li>
                         </ul>
                       </td>
@@ -122,10 +106,10 @@ class PendingOrder extends Component {
                           <ul key={items._id}>
                             <li>
                               <b>Name : </b>
-                              {items?.item?.name}{' '}
+                              {items?.item?.name}
                             </li>
                             <li>
-                              <b>Quantity :</b> {items?.quantity}{' '}
+                              <b>Quantity :</b> {items?.quantity}
                             </li>
                           </ul>
                         ))}
@@ -133,9 +117,9 @@ class PendingOrder extends Component {
                       <td>
                         <button
                           className="btn btn-outline-success btn-small"
-                          onClick={() => this.orderApproved(order._id)}
+                          onClick={() => this.orderCompleted(order?._id)}
                         >
-                          Approve
+                          Complete
                         </button>
                       </td>
                     </tr>
@@ -155,4 +139,3 @@ class PendingOrder extends Component {
     }
   }
 }
-export default PendingOrder;

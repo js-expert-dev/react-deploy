@@ -8,6 +8,7 @@ import {
   getAllBillsReducer,
   getPendingBillsReducer,
 } from '../Components/Users/Admin/Bill/store/reducer';
+import { getStaffUsersReducer } from '../Components/Users/Admin/Staff/Store/reducer';
 
 export default combineReducers({
   loggedIn: loginReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
   getPaidBillsReducer,
   getPendingBillsReducer,
   getAllBillsReducer,
+  getStaffUsersReducer,
 });

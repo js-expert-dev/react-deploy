@@ -1,7 +1,27 @@
-import { apiAddUser, apiUpdateUser } from '../../../../../constants/index';
+import {
+  apiAddUser,
+  apiUpdateUser,
+  types,
+  apiGetUser,
+} from '../../../../../constants/index';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+//get staff user
+export const actionGetStaffUser = () => async (dispatch) => {
+  const token = localStorage.getItem('token');
+  const response = await axios
+    .get(apiGetUser.base_url, {
+      headers: {
+        'access-token': token,
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.getStaffUser, payload: res.data.data });
+    })
+    .catch((error) => toast.error('error', error));
+};
 
+//add staff user
 export const addStaffUser = (data) => async (dispatch) => {
   const token = localStorage.getItem('token');
 
@@ -17,7 +37,7 @@ export const addStaffUser = (data) => async (dispatch) => {
     })
     .catch((error) => toast.error('error', error));
 };
-
+// update staff user
 export const updateStaffUser = (id, data) => async (dispatch) => {
   const token = localStorage.getItem('token');
 

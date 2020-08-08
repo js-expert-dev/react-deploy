@@ -9,6 +9,7 @@ import TableDetails from './Table/TableDetails';
 import AddTable from './Table/AddTable';
 import StaffDetails from './Staff/StaffDetails';
 import AddStaff from './Staff/AddStaff';
+import EditStaff from './Staff/EditStaff';
 import AllOrders from './Order/AllOrders';
 import PendingOrder from './Order/PendingOrder';
 import VerifiedOrder from './Order/VerifiedOrder.js';
@@ -37,6 +38,7 @@ export const AdminRoutes = (props) => {
 
       <Route exact path={`${match.path}/user`} component={StaffDetails} />
       <Route path={`${match.path}/user/add`} component={AddStaff} />
+      <Route path={`${match.path}/user/edit`} component={EditStaff} />
 
       <Route exact path={`${match.path}/orders`} component={AllOrders} />
       <Route path={`${match.path}/orders/approved`} component={VerifiedOrder} />

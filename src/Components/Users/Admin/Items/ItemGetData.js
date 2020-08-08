@@ -114,7 +114,7 @@ export default class ItemGetData extends React.Component {
               />
             </div>
 
-            <h1 style={{ textAlign: 'center' }}>Items</h1>
+            <h1 style={{ textAlign: 'center' }}>Items Details</h1>
 
             <table className="table table-strip">
               <thead>

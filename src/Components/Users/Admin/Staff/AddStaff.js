@@ -9,6 +9,7 @@ class AddStaff extends Component {
       name: '',
       password: '',
       email: '',
+      isAdmin: false,
     };
     this.state = this.initialState;
   }
@@ -32,11 +33,20 @@ class AddStaff extends Component {
   };
 
   render() {
+    const { name, email, password, isAdmin } = this.state;
+
     return (
       <div className="Container row">
         <div className="offset-md-2 offset-sm-2 offset-lg-2 offset-xl-2 offset-2 col-md-8 col-sm-8 col-lg-8 col-xl-8 col-8">
           <h2>Add User</h2>
           <form onSubmit={this.handleSubmit}>
+            <input
+              type="checkbox"
+              name="isAdmin"
+              value={isAdmin}
+              onChange={this.handleChange}
+            />
+            <label>&nbsp; Admin </label>
             <div className="form-group">
               <label>Name : </label>
               <input
@@ -44,7 +54,7 @@ class AddStaff extends Component {
                 className="form-control"
                 type="text"
                 name="name"
-                value={this.state.name}
+                value={name}
                 onChange={this.handleChange}
                 placeholder="Staff User Name"
               />
@@ -57,7 +67,7 @@ class AddStaff extends Component {
                 className="form-control"
                 type="email"
                 name="email"
-                value={this.state.email}
+                value={email}
                 onChange={this.handleChange}
                 placeholder="Email"
               />
@@ -71,7 +81,7 @@ class AddStaff extends Component {
                 type="text"
                 name="password"
                 maxLength="14"
-                value={this.state.password}
+                value={password}
                 onChange={this.handleChange}
                 placeholder="Password"
               />

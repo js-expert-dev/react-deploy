@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
+import { actionGetStaffUser } from './Store/action';
+import { connect } from 'react-redux';
 
-export default class StaffDetails extends Component {
+class StaffDetails extends Component {
   constructor(props) {
     super(props);
     this.initialState = {
@@ -17,7 +19,17 @@ export default class StaffDetails extends Component {
 
     this.state = this.initialState;
   }
+
+  componentDidMount() {
+    const res = this.props.actionGetStaffUser();
+  }
+
+  editUser = (user) => {
+    this.props.history.push(this.props.match.url + '/edit', user);
+  };
+
   render() {
+    const { staffUser } = this.props;
     return (
       <div className="row">
         <div className="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12">
@@ -37,24 +49,22 @@ export default class StaffDetails extends Component {
           <table className="table table-strip">
             <thead>
               <tr>
+                <th>Admin</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Password</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {this.state.staff?.map((user) => (
+              {staffUser?.map((user) => (
                 <tr key={user.id}>
+                  <td>{user.isAdmin ? 'Admin' : 'Staff'}</td>
                   <td>{user?.name}</td>
                   <td>{user?.email}</td>
-                  <td>{user?.password} </td>
                   <td>
                     <button
                       className="btn btn-outline-info btn-small mr-1"
-                      onClick={() =>
-                        toast.success('User is updated successfully.')
-                      }
+                      onClick={() => this.editUser(user)}
                     >
                       Edit
                     </button>
@@ -76,3 +86,10 @@ export default class StaffDetails extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ getStaffUsersReducer }) => {
+  return {
+    staffUser: getStaffUsersReducer.staffUser,
+  };
+};
+export default connect(mapStateToProps, { actionGetStaffUser })(StaffDetails);

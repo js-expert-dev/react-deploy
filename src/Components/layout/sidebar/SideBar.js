@@ -162,19 +162,25 @@ function SideBar(props) {
       icon: <i className="fas fa-hourglass-half" />,
       children: [
         {
+          displayName: 'All Orders',
+          route: `${url}/order`,
+          icon: <i className="far fa-circle" />,
+          children: [],
+        },
+        {
           displayName: 'Pending Order',
           route: `${url}/order/pending`,
           icon: <i className="far fa-circle" />,
           children: [],
         },
         {
-          displayName: 'Verified Order',
+          displayName: 'Approved Order',
           route: `${url}/order/approved`,
           icon: <i className="far fa-circle" />,
           children: [],
         },
         {
-          displayName: 'InProgress Order',
+          displayName: 'In Progress Order',
           route: `${url}/order/progress`,
           icon: <i className="far fa-circle" />,
           children: [],
@@ -192,8 +198,14 @@ function SideBar(props) {
       icon: <i className="far fa-bell" />,
       children: [
         {
-          displayName: 'Un Paid Bills',
-          route: `${url}/bill/unpaid`,
+          displayName: 'All Bills',
+          route: `${url}/bill`,
+          icon: <i className="far fa-circle" />,
+          children: [],
+        },
+        {
+          displayName: 'Pending Bills',
+          route: `${url}/bill/pending`,
           icon: <i className="far fa-circle" />,
           children: [],
         },
@@ -210,9 +222,9 @@ function SideBar(props) {
     <div className="sidebar-bg border-right" id="sidebar-wrapper">
       <div className="sidebar-heading">
         <h4 className="mb-0">Smart Ordering</h4>
-        <small className="version">
+        {/* <small className="version">
           Version 0.1.0.0 <span className="badge badge-primary">Beta</span>
-        </small>
+        </small> */}
         {location.pathname.includes('admin') ? (
           <h6 className="mt-1">Admin</h6>
         ) : (

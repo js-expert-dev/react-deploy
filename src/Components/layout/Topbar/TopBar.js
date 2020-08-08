@@ -22,8 +22,8 @@ function TopBar(props) {
           <NavDropdown
             title={
               <>
-                {' '}
-                <i className="fas fa-user mr-1" /> User Name{' '}
+                <i className="fas fa-user mr-1" />{' '}
+                {props.location.pathname.includes('admin') ? 'Admin' : 'Staff'}
               </>
             }
             id="collasible-nav-dropdown"

@@ -58,7 +58,9 @@ class PaidBills extends Component {
             <tbody>
               {paidBill?.map((order) => (
                 <tr key={order.id}>
-                  <td>{order?.status}</td>
+                  <td style={{ color: 'red' }}>
+                    <b>{order?.status.toUpperCase()}</b>
+                  </td>
                   <td>{order?.paymentType}</td>
                   <td>{order?.checkIn}</td>
                   <td>{order?.amount} </td>

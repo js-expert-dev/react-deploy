@@ -114,7 +114,7 @@ export default class TableGetData extends Component {
                 onChange={this.updateSearch.bind(this)}
               />
             </div>
-            <h1 style={{ textAlign: 'center' }}>Tables</h1>
+            <h1 style={{ textAlign: 'center' }}>Tables Details</h1>
             {this.state.response.message && (
               <p>{this.state.response.message}</p>
             )}
