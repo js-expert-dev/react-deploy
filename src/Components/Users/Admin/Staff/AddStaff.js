@@ -14,8 +14,9 @@ class AddStaff extends Component {
     this.state = this.initialState;
   }
   handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+    const target = event.target;
+    const value = target.name === 'isAdmin' ? target.checked : target.value;
+    const name = target.name;
 
     this.setState({
       [name]: value,
@@ -26,7 +27,6 @@ class AddStaff extends Component {
     event.preventDefault();
     const formData = this.state;
     const res = this.props.addStaffUser(formData);
-    debugger;
     if (!res.error) {
       this.setState(this.initialState);
     }
@@ -43,7 +43,7 @@ class AddStaff extends Component {
             <input
               type="checkbox"
               name="isAdmin"
-              value={isAdmin}
+              checked={isAdmin}
               onChange={this.handleChange}
             />
             <label>&nbsp; Admin </label>

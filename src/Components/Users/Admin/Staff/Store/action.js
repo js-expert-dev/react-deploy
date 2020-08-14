@@ -3,6 +3,7 @@ import {
   apiUpdateUser,
   types,
   apiGetUser,
+  apiDelUser,
 } from '../../../../../constants/index';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -17,6 +18,21 @@ export const actionGetStaffUser = () => async (dispatch) => {
     })
     .then((res) => {
       dispatch({ type: types.getStaffUser, payload: res.data.data });
+    })
+    .catch((error) => toast.error('error', error));
+};
+//delete staff user
+export const actionDeleteStaffUser = (id) => async (dispatch) => {
+  const token = localStorage.getItem('token');
+  const response = await axios
+    .delete(apiDelUser.base_url + id, {
+      headers: {
+        'access-token': token,
+      },
+    })
+    .then((res) => {
+      dispatch({ type: types.deleteStaffUser, payload: res.data.data });
+      return res;
     })
     .catch((error) => toast.error('error', error));
 };

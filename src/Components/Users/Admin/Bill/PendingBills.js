@@ -60,6 +60,7 @@ class PendingBills extends Component {
                 <th>Status </th>
                 <th>Payment Type </th>
                 <th>CheckIn Code </th>
+                <th>Table #</th>
                 <th>Amount</th>
                 <th>Action</th>
               </tr>
@@ -71,7 +72,8 @@ class PendingBills extends Component {
                     <b>{order?.status.toUpperCase()}</b>
                   </td>
                   <td>{order?.paymentType}</td>
-                  <td>{order?.checkIn}</td>
+                  <td>{order?.checkIn?.table?.checkInCode}</td>
+                  <td>{order?.checkIn?.table?.tableNo}</td>
                   <td>{order?.amount} </td>
                   <td>
                     <button

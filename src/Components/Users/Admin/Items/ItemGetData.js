@@ -139,10 +139,10 @@ export default class ItemGetData extends React.Component {
                       />{' '}
                       {console.log(item.image)}
                     </td>
-                    <td>{item.name}</td>
-                    <td>{item.price}</td>
-                    <td>{item.category.name} </td>
-                    <td>{item.description} </td>
+                    <td>{item?.name}</td>
+                    <td>{item?.price}</td>
+                    <td>{item?.category?.name} </td>
+                    <td>{item?.description} </td>
                     <td>
                       <button
                         className="btn btn-outline-info btn-small"

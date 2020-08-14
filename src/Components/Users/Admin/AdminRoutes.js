@@ -18,7 +18,7 @@ import InProgressOrder from './Order/InProgress';
 import CompletedOrder from './Order/Completed';
 import PaidBills from './Bill/PaidBills';
 import AllBills from './Bill/AllBills';
-
+import Example from './countDown';
 export const AdminRoutes = (props) => {
   let { match } = props;
   return (
@@ -54,6 +54,7 @@ export const AdminRoutes = (props) => {
       <Route exact path={`${match.path}/bills`} component={AllBills} />
       <Route path={`${match.path}/bills/paid`} component={PaidBills} />
       <Route path={`${match.path}/bills/pending`} component={PendingBills} />
+      <Route path={`${match.path}/count`} component={Example} />
     </>
   );
 };

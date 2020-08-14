@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
-import { actionGetStaffUser } from './Store/action';
+import { actionGetStaffUser, actionDeleteStaffUser } from './Store/action';
 import { connect } from 'react-redux';
 
 class StaffDetails extends Component {
@@ -26,6 +26,11 @@ class StaffDetails extends Component {
 
   editUser = (user) => {
     this.props.history.push(this.props.match.url + '/edit', user);
+  };
+  deleteUser = async (id) => {
+    const res = await this.props.actionDeleteStaffUser(id);
+
+    toast.success('User is deleted successfully.');
   };
 
   render() {
@@ -70,9 +75,7 @@ class StaffDetails extends Component {
                     </button>
                     <button
                       className="btn btn-outline-danger btn-small"
-                      onClick={() =>
-                        toast.success('User is deleted successfully.')
-                      }
+                      onClick={() => this.deleteUser(user._id)}
                     >
                       Delete
                     </button>
@@ -92,4 +95,7 @@ const mapStateToProps = ({ getStaffUsersReducer }) => {
     staffUser: getStaffUsersReducer.staffUser,
   };
 };
-export default connect(mapStateToProps, { actionGetStaffUser })(StaffDetails);
+export default connect(mapStateToProps, {
+  actionGetStaffUser,
+  actionDeleteStaffUser,
+})(StaffDetails);

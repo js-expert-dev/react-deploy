@@ -21,7 +21,6 @@ class Layout extends React.Component {
   render() {
     const { isSideNavOpen } = this.state;
     const { location } = this.props;
-    debugger;
     return (
       <div id="wrapper" className={`d-flex ${isSideNavOpen ? 'toggled' : ''}`}>
         <SideBar {...this.props} className="shadow" />

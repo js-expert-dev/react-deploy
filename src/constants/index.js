@@ -11,6 +11,7 @@ export const types = {
   getPendingBills: 'GET_PENDING_BILLS',
   getAllBills: 'GET_ALL_BILLS',
   getStaffUser: 'GET_STAFF_USER',
+  deleteStaffUser: 'DELETE_STAFF_USER',
 };
 
 export const apiCategory = {
@@ -33,6 +34,9 @@ export const apiAddUser = {
 
 export const apiGetUser = {
   base_url: 'http://localhost:3000/user',
+};
+export const apiDelUser = {
+  base_url: 'http://localhost:3000/user/',
 };
 
 export const apiUpdateUser = {

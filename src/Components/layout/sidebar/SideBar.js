@@ -54,7 +54,7 @@ function SideBar(props) {
     },
     {
       displayName: 'Table Management',
-      icon: <i className="fas fa-users" />,
+      icon: <i className="fas fa-hourglass-half" />,
       children: [
         {
           displayName: 'Table Details',
@@ -72,7 +72,7 @@ function SideBar(props) {
     },
     {
       displayName: 'Staff Management',
-      icon: <i className="far fa-bell" />,
+      icon: <i className="fas fa-users" />,
       children: [
         {
           displayName: 'User Details',
@@ -90,7 +90,7 @@ function SideBar(props) {
     },
     {
       displayName: 'Order Management',
-      icon: <i className="fas fa-hourglass-half" />,
+      icon: <i className="far fa-bell" />,
       children: [
         {
           displayName: 'All Orders',

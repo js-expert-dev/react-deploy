@@ -3,10 +3,18 @@ import './Dashboard.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { connect } from 'react-redux';
+import { actionGetStaffUser } from './Staff/Store/action';
+import { actionGetPendingBills } from './Bill/store/action';
 
 class Dashboard extends Component {
+  async componentDidMount() {
+    await this.props.actionGetStaffUser();
+    await this.props.actionGetPendingBills();
+  }
+
   render() {
-    let { history } = this.props;
+    let { history, staffUser, pendingBills } = this.props;
     return (
       <Container>
         <Row>
@@ -16,7 +24,9 @@ class Dashboard extends Component {
                 <i className="fas fa-users" />
               </div>
               <div className="dbox__body">
-                <span className="dbox__count">50</span>
+                <span className="dbox__count">
+                  {staffUser.length.toString()}
+                </span>
                 <span className="dbox__title">Total Users</span>
               </div>
 
@@ -36,7 +46,7 @@ class Dashboard extends Component {
                 <i className="far fa-bell" />
               </div>
               <div className="dbox__body">
-                <span className="dbox__count">100</span>
+                <span className="dbox__count">52</span>
                 <span className="dbox__title">Total Orders</span>
               </div>
 
@@ -56,8 +66,10 @@ class Dashboard extends Component {
                 <i className="far fa-object-group" />
               </div>
               <div className="dbox__body">
-                <span className="dbox__count">5</span>
-                <span className="dbox__title">Total Bills</span>
+                <span className="dbox__count">
+                  {pendingBills.length.toString()}
+                </span>
+                <span className="dbox__title">Total Pending Bills</span>
               </div>
               <div className="dbox__action">
                 <button
@@ -75,4 +87,14 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = ({ getStaffUsersReducer, getPendingBillsReducer }) => {
+  return {
+    staffUser: getStaffUsersReducer.staffUser,
+    pendingBills: getPendingBillsReducer.pendingBills,
+  };
+};
+
+export default connect(mapStateToProps, {
+  actionGetStaffUser,
+  actionGetPendingBills,
+})(Dashboard);

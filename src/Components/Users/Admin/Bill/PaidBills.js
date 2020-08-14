@@ -41,7 +41,7 @@ class PaidBills extends Component {
               className="form-control"
               type="text"
               placeholder="Search bill by amount here"
-              value={this.state.search}
+              value={this.state?.search}
               onChange={this.updateSearch.bind(this)}
             />
           </div>
@@ -52,17 +52,19 @@ class PaidBills extends Component {
                 <th>Status </th>
                 <th>Payment Type </th>
                 <th>CheckIn Code </th>
+                <th>Table #</th>
                 <th>Amount</th>
               </tr>
             </thead>
             <tbody>
               {paidBill?.map((order) => (
-                <tr key={order.id}>
+                <tr key={order?.id}>
                   <td style={{ color: 'red' }}>
                     <b>{order?.status.toUpperCase()}</b>
                   </td>
                   <td>{order?.paymentType}</td>
-                  <td>{order?.checkIn}</td>
+                  <td>{order?.checkIn?.table?.checkInCode}</td>
+                  <td>{order?.checkIn?.table?.tableNo}</td>
                   <td>{order?.amount} </td>
                 </tr>
               ))}
