@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { toast } from 'react-toastify';
+import { url } from '../../../../constants/index';
 
 export default class VerifiedOrder extends Component {
   state = {
@@ -9,7 +10,7 @@ export default class VerifiedOrder extends Component {
   };
 
   componentDidMount() {
-    const apiUrl = 'http://localhost:3000/order?status=approved';
+    const apiUrl = url + '/order?status=approved';
     const token = localStorage.getItem('token');
 
     const options = {
@@ -36,7 +37,7 @@ export default class VerifiedOrder extends Component {
   }
 
   orderInProgress = (orderId) => {
-    const apiUrl = 'http://localhost:3000/order/' + orderId;
+    const apiUrl = url + '/order/' + orderId;
     const token = localStorage.getItem('token');
 
     const data = {

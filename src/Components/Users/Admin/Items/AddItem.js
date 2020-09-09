@@ -3,6 +3,8 @@ import toFormData from '../utils/utils';
 import './item.css';
 import { addItems } from './action';
 import { connect } from 'react-redux';
+import { url } from '../../../../constants/index';
+
 class AddItem extends React.Component {
   constructor(props) {
     super(props);
@@ -44,7 +46,7 @@ class AddItem extends React.Component {
   }
 
   async componentDidMount() {
-    const apiUrl = 'http://localhost:3000/category';
+    const apiUrl = url + '/category';
     const token = localStorage.getItem('token');
 
     const options = {

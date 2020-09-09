@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
-
+import { url } from '../../../../constants/index';
 const token = localStorage.getItem('token');
 
 export default class TableGetData extends Component {
@@ -15,7 +15,7 @@ export default class TableGetData extends Component {
   }
 
   componentDidMount() {
-    const apiUrl = 'http://localhost:3000/table';
+    const apiUrl = url + '/table';
 
     const options = {
       method: 'GET',
@@ -44,7 +44,7 @@ export default class TableGetData extends Component {
   delCategory(itemId) {
     const { items } = this.state;
 
-    const apiUrl = 'http://localhost:3000/table/' + itemId;
+    const apiUrl = url + '/table/' + itemId;
     const formData = new FormData();
     formData.append('itemId', itemId);
 

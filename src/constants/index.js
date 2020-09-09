@@ -1,6 +1,10 @@
+const pro_url = 'https://smart-ordering-bk.herokuapp.com';
+const dev_url = 'http://localhost:3000';
+export const url = dev_url;
+
 export const api = {
   login: '',
-  base_url: 'http://localhost:3000/auth/signin',
+  base_url: url + '/auth/signin',
 };
 
 export const types = {
@@ -15,44 +19,44 @@ export const types = {
 };
 
 export const apiCategory = {
-  base_url: 'http://localhost:3000/category',
+  base_url: url + '/category',
 };
 
 export const categoryTypes = {};
 
 export const apiTable = {
-  base_url: 'http://localhost:3000/table',
+  base_url: url + '/table',
 };
 
 export const apiItems = {
-  base_url: 'http://localhost:3000/item',
+  base_url: url + '/item',
 };
 
 export const apiAddUser = {
-  base_url: 'http://localhost:3000/user',
+  base_url: url + '/user',
 };
 
 export const apiGetUser = {
-  base_url: 'http://localhost:3000/user',
+  base_url: url + '/user',
 };
 export const apiDelUser = {
-  base_url: 'http://localhost:3000/user/',
+  base_url: url + '/user/',
 };
 
 export const apiUpdateUser = {
-  base_url: 'http://localhost:3000/user/',
+  base_url: url + '/user/',
 };
 
 export const apiGetPaidBills = {
-  base_url: 'http://localhost:3000/bill?status=paid',
+  base_url: url + '/bill?status=paid',
 };
 export const apiGetPendingBills = {
-  base_url: 'http://localhost:3000/bill?status=pending',
+  base_url: url + '/bill?status=pending',
 };
 export const apiGetAllBills = {
-  base_url: 'http://localhost:3000/bill?status=all',
+  base_url: url + '/bill?status=all',
 };
 
 export const apiUpdateBillStatus = {
-  base_url: 'http://localhost:3000/bill/',
+  base_url: url + '/bill/',
 };

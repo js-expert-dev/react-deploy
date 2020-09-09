@@ -1,6 +1,7 @@
 import React from 'react';
 // import { getToken } from "../utils/common";
 import { toast } from 'react-toastify';
+import { url } from '../../../../constants/index';
 
 const token = localStorage.getItem('token');
 
@@ -16,7 +17,7 @@ export default class ItemGetData extends React.Component {
   }
 
   componentDidMount() {
-    const apiUrl = 'http://localhost:3000/item';
+    const apiUrl = url + '/item';
 
     const options = {
       method: 'GET',
@@ -45,7 +46,7 @@ export default class ItemGetData extends React.Component {
   deleteItem(itemId) {
     const { items } = this.state;
 
-    const apiUrl = 'http://localhost:3000/item/' + itemId;
+    const apiUrl = url + '/item/' + itemId;
     const formData = new FormData();
     formData.append('itemId', itemId);
 
@@ -132,7 +133,7 @@ export default class ItemGetData extends React.Component {
                   <tr key={item.id}>
                     <td>
                       <img
-                        src={'http://localhost:3000/' + item.image}
+                        src={url + '/' + item.image}
                         alt="item Pic"
                         width="100px"
                         height="100px"

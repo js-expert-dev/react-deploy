@@ -2,9 +2,10 @@ import React from 'react';
 import ItemList from './ItemGetData';
 import EditItem from './EditItem';
 import { toast } from 'react-toastify';
+import { url } from '../../../../constants/index';
 
 const axios = require('axios').default;
-const API_URL = 'http://localhost:3000';
+const API_URL = url;
 const token = localStorage.getItem('token');
 
 export default class itemsDetails extends React.Component {
@@ -67,7 +68,7 @@ export default class itemsDetails extends React.Component {
 
   editItem = (itemid) => {
     this.setState({ itemId: itemid });
-    const apiUrl = 'http://localhost:3000/item/' + itemid;
+    const apiUrl = url + '/item/' + itemid;
 
     const options = {
       method: 'GET',

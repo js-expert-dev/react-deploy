@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
+import { url } from '../../../../constants/index';
 
 class PendingOrder extends Component {
   state = {
@@ -11,7 +12,7 @@ class PendingOrder extends Component {
   };
 
   componentDidMount() {
-    const apiUrl = 'http://localhost:3000/order?status=pending';
+    const apiUrl = url + '/order?status=pending';
     const token = localStorage.getItem('token');
 
     const options = {
@@ -38,7 +39,7 @@ class PendingOrder extends Component {
   }
 
   orderApproved = (orderId) => {
-    const apiUrl = 'http://localhost:3000/order/' + orderId;
+    const apiUrl = url + '/order/' + orderId;
     const token = localStorage.getItem('token');
 
     const data = {

@@ -2,6 +2,7 @@ import React from 'react';
 import CategoryList from './CatagoryGetData';
 import EditCategory from './EditCategory';
 import { toast } from 'react-toastify';
+import { url } from '../../../../constants/index';
 
 const token = localStorage.getItem('token');
 
@@ -32,7 +33,7 @@ export default class CategoryDetails extends React.Component {
     let apiUrl;
     let options;
     if (this.state.isEditProduct) {
-      apiUrl = 'http://localhost:3000/category/' + this.state.itemId;
+      apiUrl = url + '/category/' + this.state.itemId;
       options = {
         method: 'PUT',
         headers: {
@@ -43,7 +44,7 @@ export default class CategoryDetails extends React.Component {
         body: JSON.stringify(data),
       };
     } else {
-      apiUrl = 'http://localhost:3000/category';
+      apiUrl = url + '/category';
       options = {
         method: 'POST',
         headers: {
@@ -73,7 +74,7 @@ export default class CategoryDetails extends React.Component {
 
   editCategory = (categoryId) => {
     this.setState({ itemId: categoryId });
-    const apiUrl = 'http://localhost:3000/category/' + categoryId;
+    const apiUrl = url + '/category/' + categoryId;
 
     const options = {
       method: 'GET',

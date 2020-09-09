@@ -1,4 +1,5 @@
 import React from 'react';
+import { url } from '../../../../constants/index';
 
 // import { getToken } from "../utils/common";
 
@@ -15,7 +16,7 @@ export default class CategoryData extends React.Component {
   }
 
   componentDidMount() {
-    const apiUrl = 'http://localhost:3000/category';
+    const apiUrl = url + '/category';
 
     const options = {
       method: 'GET',
@@ -44,7 +45,7 @@ export default class CategoryData extends React.Component {
   delCategory(itemId) {
     const { items } = this.state;
 
-    const apiUrl = 'http://localhost:3000/category/' + itemId;
+    const apiUrl = url + '/category/' + itemId;
     const formData = new FormData();
     formData.append('itemId', itemId);
 

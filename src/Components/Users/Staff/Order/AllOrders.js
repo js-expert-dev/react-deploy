@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { toast } from 'react-toastify';
-
+import { url } from '../../../../constants/index';
 export default class AllOrders extends Component {
   state = {
     isLoaded: false,
@@ -9,7 +9,7 @@ export default class AllOrders extends Component {
   };
 
   componentDidMount() {
-    const apiUrl = 'http://localhost:3000/order';
+    const apiUrl = url + '/order';
     const token = localStorage.getItem('token');
 
     const options = {

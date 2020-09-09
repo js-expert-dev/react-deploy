@@ -1,5 +1,7 @@
 import React from 'react';
 import toFormData from '../utils/utils';
+import { url } from '../../../../constants/index';
+
 // import { getToken } from "../utils/common";
 
 const token = localStorage.getItem('token');
@@ -49,7 +51,7 @@ class EditItem extends React.Component {
   }
 
   componentDidMount() {
-    const apiUrl = 'http://localhost:3000/category';
+    const apiUrl = url + '/category';
 
     const options = {
       method: 'GET',

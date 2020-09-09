@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { toast } from 'react-toastify';
-
+import { url } from '../../../../constants/index';
 import TableList from './TableGetData';
 import EditTable from './EditTable';
 
@@ -34,7 +34,7 @@ class tableDetails extends Component {
     let apiUrl;
     let options;
     if (this.state.isEditProduct) {
-      apiUrl = 'http://localhost:3000/table/' + this.state.itemId;
+      apiUrl = url + '/table/' + this.state.itemId;
       options = {
         method: 'PUT',
         headers: {
@@ -45,7 +45,7 @@ class tableDetails extends Component {
         body: JSON.stringify(data),
       };
     } else {
-      apiUrl = 'http://localhost:3000/table';
+      apiUrl = url + '/table';
       options = {
         method: 'POST',
         headers: {
@@ -76,7 +76,7 @@ class tableDetails extends Component {
 
   editCategory = (categoryId) => {
     this.setState({ itemId: categoryId });
-    const apiUrl = 'http://localhost:3000/table/' + categoryId;
+    const apiUrl = url + '/table/' + categoryId;
 
     const options = {
       method: 'GET',
