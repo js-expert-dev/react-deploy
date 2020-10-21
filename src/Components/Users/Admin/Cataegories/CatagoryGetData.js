@@ -75,9 +75,10 @@ export default class CategoryData extends React.Component {
   }
   filterItems = () => {
     if (this.state?.items?.length > 0) {
-      return this.state?.items.filter((item) => {
+      return this.state?.items?.filter((item) => {
+        console.log("Item", item);
         return (
-          item.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !==
+          item?.name?.toLowerCase().indexOf(this.state?.search?.toLowerCase()) !==
           -1
         );
       });

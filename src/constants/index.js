@@ -1,6 +1,6 @@
 const pro_url = 'https://smart-ordering-bk.herokuapp.com';
-const dev_url = 'http://localhost:3000';
-export const url = dev_url;
+// const dev_url = 'http://localhost:3000';
+export const url = pro_url;
 
 export const api = {
   login: '',
